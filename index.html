@@ -464,16 +464,107 @@
       </div>
     </footer>
 
-    <div class="backdrop is-hidden" data-modal>
+    <!--MODAL-->
+
+    <div class="backdrop" data-modal>
       <div class="modal">
         <button type="button" class="modal-close" data-modal-close>
           <svg width="11px" height="11px">
             <use href="./images/symbol-defs.svg#icon-close"></use>
           </svg>
         </button>
+
+        <p class="modal-slogan">Оставьте свои данные, мы вам перезвоним</p>
+
+        <form class="modal-form js-speaker-form">
+          <div class="modal-inputs">
+            <div class="field-form">
+              <label for="name">Имя</label>
+              <div class="form-input">
+                <input type="text" name="name" id="name" placeholder=" " /><svg
+                  class="icon-modal"
+                  width="18px"
+                  height="18px"
+                >
+                  <use href="./images/symbol-defs.svg#icon-person-modal"></use>
+                </svg>
+              </div>
+            </div>
+
+            <div class="field-form">
+              <label for="phone">Телефон</label>
+              <div class="form-input">
+                <input type="tel" name="phone" id="phone" placeholder=" " /><svg
+                  class="icon-modal"
+                  width="18px"
+                  height="18px"
+                >
+                  <use href="./images/symbol-defs.svg#icon-phone-modal"></use>
+                </svg>
+              </div>
+            </div>
+
+            <div class="field-form">
+              <label for="mail">Почта</label>
+              <div class="form-input">
+                <input
+                  type="email"
+                  name="email"
+                  id="mail"
+                  placeholder=" "
+                /><svg class="icon-modal" width="18px" height="18px">
+                  <use href="./images/symbol-defs.svg#icon-email-modal"></use>
+                </svg>
+              </div>
+            </div>
+
+            <div class="comment-form">
+              <label
+                >Комментарий<textarea
+                  name="comment"
+                  rows="10"
+                  placeholder="Введите текст"
+                ></textarea>
+              </label>
+            </div>
+          </div>
+
+          <div class="modal-bottom">
+            <div class="policy-chek">
+              <input
+                class="policy-checkbox visually-hidden"
+                type="checkbox"
+                name="policy"
+                id="policy"
+              />
+              <label for="policy" class="policy-label"
+                >Соглашаюсь с рассылкой и принимаю
+                <a class="policy-link" href="">Условия договора</a></label
+              >
+            </div>
+
+            <button type="submit" class="modal-button">Отправить</button>
+          </div>
+        </form>
       </div>
     </div>
 
     <script src="./js/modal.js"></script>
+
+    <script>
+      (() => {
+        document
+          .querySelector('.js-speaker-form')
+          .addEventListener('submit', e => {
+            e.preventDefault();
+
+            new FormData(e.currentTarget).forEach((value, name) =>
+              console.log(`${name}: ${value}`),
+            );
+
+            e.currentTarget.reset();
+          });
+      })();
+    </script>
   </body>
 </html>
